@@ -1,0 +1,6 @@
+{
+    "delimiter": ",",
+    "patterns": [
+        ".*join zoom meeting.*|https?:.*|.*meeting id.*|.*password.*"
+    ]
+}
