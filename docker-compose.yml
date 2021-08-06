@@ -15,8 +15,8 @@ services:
             TEXT_EXTRACTION_CONFIG: "/code/config.json"
         working_dir: /code
         volumes:
-            - ./src/text_extraction.pl:/code/text_extraction.pl
-            - ./src/config.json:/code/config.json
+            - ./src/text_extraction.pl:/code/text_extraction.pl:ro
+            - ./src/config.json:/code/config.json:ro
         logging:
             driver: "json-file"
             options:
