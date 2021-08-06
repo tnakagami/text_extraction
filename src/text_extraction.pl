@@ -34,15 +34,15 @@ sub extract_text {
     return join("\n", @extracted);
 }
 
-# get environment variables
-my $config_filepath = './config.json';
-if (defined($ENV{TEXT_EXTRACTION_CONFIG})) {
-    $config_filepath = $ENV{TEXT_EXTRACTION_CONFIG};
-}
-
 # ============
 # main routine
 # ============
+my $config_filepath = './config.json';
+if (defined($ENV{TEXT_EXTRACTION_CONFIG})) {
+    # get environment variables
+    $config_filepath = $ENV{TEXT_EXTRACTION_CONFIG};
+}
+# main
 eval {
     # preparation
     my $config = &read_config($config_filepath);
@@ -56,7 +56,6 @@ eval {
     # write text to clipboard
     #Clipboard->copy($result);
 };
-
 # check exception
 if ($@) {
     my $err = $@;
