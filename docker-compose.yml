@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+    perl:
+        build:
+            context: ./
+            # Dockerfile
+            dockerfile: Dockerfile
+        # image name
+        image: custom.perl
+        restart: always
+        # Container name
+        container_name: perl
+        environment:
+            TEXT_EXTRACTION_CONFIG: "/code/config.json"
+        working_dir: /code
+        volumes:
+            - ./src/text_extraction.pl:/code/text_extraction.pl
+            - ./src/config.json:/code/config.json
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "3"
